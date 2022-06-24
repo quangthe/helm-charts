@@ -11,4 +11,14 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/simple-magnolia-helm-0.1.0/simple-magnolia-helm-0.1.0.tgz
     version: 0.1.0
+  - apiVersion: v2
+    appVersion: "6.2"
+    created: "2022-06-24T15:45:34.858434972Z"
+    description: A simple helm chart to deploy Magnolia with external Postgres database.
+    digest: 4d95260ca45233ff6e8efdf5c1c1812ffd180df0b940424702c0261c93d477a5
+    name: simple-magnolia-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/simple-magnolia-helm-0.1.1/simple-magnolia-helm-0.1.1.tgz
+    version: 0.1.1
 generated: "2022-06-24T14:17:43.381685+07:00"
