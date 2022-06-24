@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  simple-magnolia-helm:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-24T13:41:09.027487+07:00"
+    description: A Helm chart for Kubernetes
+    digest: e840beef6506d85fd15a82eb8cfd0fa950b9a47c3cd2cbbc8829032829fe051d
+    name: simple-magnolia-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/simple-magnolia-helm-0.1.0/simple-magnolia-helm-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-06-24T13:41:09.027493+07:00"
