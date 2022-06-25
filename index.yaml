@@ -3,16 +3,6 @@ entries:
   simple-magnolia-helm:
   - apiVersion: v2
     appVersion: "6.2"
-    created: "2022-06-24T14:17:43.38168+07:00"
-    description: A simple helm chart to deploy Magnolia with external Postgres database.
-    digest: d04fd3b520fab49c98be3f93bc4f1fd29c5bea3c09c9e1d573fdccca3890499b
-    name: simple-magnolia-helm
-    type: application
-    urls:
-    - https://github.com/quangthe/helm-charts/releases/download/simple-magnolia-helm-0.1.0/simple-magnolia-helm-0.1.0.tgz
-    version: 0.1.0
-  - apiVersion: v2
-    appVersion: "6.2"
     created: "2022-06-24T15:45:34.858434972Z"
     description: A simple helm chart to deploy Magnolia with external Postgres database.
     digest: 4d95260ca45233ff6e8efdf5c1c1812ffd180df0b940424702c0261c93d477a5
@@ -21,4 +11,26 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/simple-magnolia-helm-0.1.1/simple-magnolia-helm-0.1.1.tgz
     version: 0.1.1
-generated: "2022-06-24T14:17:43.381685+07:00"
+  - apiVersion: v2
+    appVersion: "6.2"
+    created: "2022-06-24T14:17:43.38168+07:00"
+    description: A simple helm chart to deploy Magnolia with external Postgres database.
+    digest: d04fd3b520fab49c98be3f93bc4f1fd29c5bea3c09c9e1d573fdccca3890499b
+    name: simple-magnolia-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/simple-magnolia-helm-0.1.0/simple-magnolia-helm-0.1.0.tgz
+    version: 0.1.0
+  static-site-helm:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2022-06-25T04:16:26.466391008Z"
+    description: A simple Helm chart to verify Magnolia PaaS ingress and certificate
+      setup
+    digest: de298917ac06ce628328bb56e5f51a64dd45f440c6217da7b99ef1f0ce150bee
+    name: static-site-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.1.0/static-site-helm-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-06-25T04:16:26.466407408Z"
