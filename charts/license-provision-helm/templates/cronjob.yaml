@@ -32,9 +32,13 @@ spec:
               name: provisioner
               args:
                 - license
+                - --http-debug={{ .Values.httpDebug }}
                 - --license-server={{ .Values.license.server }}
                 - --namespace={{ .Values.namespace }}
-                - --http-debug={{ .Values.httpDebug }}
+                - --label-selector="{{ .Values.magnolia.labelSelector }}"
+                - --magnolia-port={{ .Values.magnolia.port }}
+                - --check-license={{ .Values.license.checkLicense }}
+                - --private-key={{ .Values.privateKeyPath }}
               env:
                 - name: MGNL_PAAS_LICENSE_USER
                   valueFrom:

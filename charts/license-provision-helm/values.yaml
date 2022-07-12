@@ -1,16 +1,20 @@
 # Default values for license-provision-helm.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+
+# namespace to lookup Magnolia instances
 namespace: default
 authSecretName: magnolia-auth-key
+privateKeyPath: "/auth/private.pem"
+
+# license registration info
 customer: ""
 magnoliaVersion: ""
-
 
 image:
   repository: registry.magnolia-platform.com/operations/license-provision
   pullPolicy: IfNotPresent
-  tag: "v0.1.4"
+  tag: "v0.1.5"
 
 imagePullSecrets:
   - name: gitlab
@@ -30,8 +34,17 @@ license:
   server: "https://license.int.magnolia-platform.com"
   username: ""
   password: ""
+  # check license expiration before renewing
+  # required: info.magnolia.cloud:magnolia-cloud-bootstrapper version >= 1.0.1-SNAPSHOT
+  # require: info.magnolia.cloud:magnolia-cloud-bootstrapper-enterprise version >= 1.0.1-SNAPSHOT
+  checkLicense: false
 
 httpDebug: false
+magnolia:
+  # syntax kubectl selector
+  labelSelector: "chart=magnolia-helm,tier=app"
+  # tomcat port (default 8080)
+  port: "8080"  
 
 serviceAccount:
   # Specifies whether a service account should be created
