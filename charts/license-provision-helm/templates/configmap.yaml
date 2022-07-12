@@ -1,0 +1,11 @@
+{{- $fullName := include "license-provision-helm.fullname" . -}}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ printf "%s-cm" $fullName }}
+  labels:
+    {{- include "license-provision-helm.labels" . | nindent 4 }}
+data:
+  customer: {{ .Values.customer }}
+  magnoliaVersion: {{ .Values.magnoliaVersion }}

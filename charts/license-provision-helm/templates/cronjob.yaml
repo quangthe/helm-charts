@@ -1,0 +1,72 @@
+{{- $fullName := include "license-provision-helm.fullname" . -}}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ printf "%s-cj" $fullName }}
+  labels:
+    {{- include "license-provision-helm.labels" . | nindent 4 }}
+spec:
+  startingDeadlineSeconds: {{ .Values.cronjob.startingDeadlineSeconds }}
+  jobTemplate:
+    metadata:
+      name: {{ include "license-provision-helm.fullname" . }}
+      labels:
+        {{- include "license-provision-helm.labels" . | nindent 8 }}
+    spec:
+      ttlSecondsAfterFinished: {{ .Values.cronjob.ttlSecondsAfterFinished }}
+      template:
+        spec:
+          serviceAccountName: {{ include "license-provision-helm.serviceAccountName" . }}
+          volumes:
+            - name: auth
+              secret:
+                secretName: {{ .Values.authSecretName }}
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          containers:
+            - image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              name: provisioner
+              args:
+                - license
+                - --license-server={{ .Values.license.server }}
+                - --namespace={{ .Values.namespace }}
+                - --http-debug={{ .Values.httpDebug }}
+              env:
+                - name: MGNL_PAAS_LICENSE_USER
+                  valueFrom:
+                    secretKeyRef:
+                      key: username
+                      name: {{ printf "%s-cred" $fullName }}
+                      optional: true
+                - name: MGNL_PAAS_LICENSE_PASS
+                  valueFrom:
+                    secretKeyRef:
+                      key: password
+                      name: {{ printf "%s-cred" $fullName }}
+                      optional: true
+                - name: MGNL_PAAS_MAGNOLIA_VERSION
+                  valueFrom:
+                    configMapKeyRef:
+                      key: magnoliaVersion
+                      name: {{ printf "%s-cm" $fullName }}
+                      optional: true
+                - name: MGNL_PAAS_CUSTOMER
+                  valueFrom:
+                    configMapKeyRef:
+                      key: customer
+                      name: {{ printf "%s-cm" $fullName }}
+                      optional: true
+              volumeMounts:
+                - mountPath: /auth
+                  name: auth
+              resources:
+                {{- toYaml .Values.resources | nindent 16 }}
+              securityContext:
+                {{- toYaml .Values.securityContext | nindent 16 }}
+          restartPolicy: OnFailure
+  schedule: "{{ .Values.cronjob.schedule }}"
+  suspend: {{ .Values.cronjob.suspend }}
