@@ -19,5 +19,5 @@ boot helm-charts/license-provision-helm
 
 ## Clean up
 ```
-helm -n del boot
+helm -n dev del boot
 ```
