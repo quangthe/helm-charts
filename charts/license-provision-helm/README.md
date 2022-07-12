@@ -14,7 +14,7 @@ helm --namespace dev upgrade -i \
 --set license.server="https://license.int.magnolia-platform.com" \
 --set license.username="test" \
 --set license.password="test" \
-boot helm-charts/license-provision
+boot helm-charts/license-provision-helm
 ```
 
 ## Clean up
