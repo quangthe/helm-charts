@@ -8,7 +8,7 @@ helm repo update
 
 # example: Magnolia PaaS instances are in dev namespace
 helm --namespace dev upgrade -i \
---set namespace=dev
+--set namespace=dev \
 --set customer="test" \
 --set magnoliaVersion="6.2.19" \
 --set license.server="https://license.int.magnolia-platform.com" \
