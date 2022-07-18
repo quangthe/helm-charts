@@ -1,0 +1,17 @@
+{{- $fullName := include "simple-springboot-helm.fullname" . -}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "simple-springboot-helm.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "simple-springboot-helm.selectorLabels" . | nindent 4 }}

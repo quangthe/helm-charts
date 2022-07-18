@@ -1,0 +1,83 @@
+{{- $fullName := include "simple-springboot-helm.fullname" . -}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "simple-springboot-helm.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "simple-springboot-helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "simple-springboot-helm.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "simple-springboot-helm.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+          - name: SPRING_PROFILES_DEFAULT
+            value: "{{ .Values.profiles.default }}"
+          - name: SPRING_PROFILES_ACTIVE
+            value: "{{ .Values.profiles.active }}"
+          {{- if .Values.appConfig }}
+          - name: SPRING_CONFIG_ADDITIONAL-LOCATION
+            value: /app/config/
+          {{- end }}
+          livenessProbe:
+            httpGet:
+              path: "{{ .Values.actuator.livenessPath }}"
+              port: {{ .Values.actuator.port }}
+          readinessProbe:
+            httpGet:
+              path: "{{ .Values.actuator.readinessPath }}"
+              port: {{ .Values.actuator.port }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.appConfig }}
+          volumeMounts:
+          - name: appvol
+            mountPath: /app/config
+          {{- end }}
+      {{- if .Values.appConfig }}
+      volumes:
+      - name: appvol
+        configMap:
+          name: {{ .Values.appConfig }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
