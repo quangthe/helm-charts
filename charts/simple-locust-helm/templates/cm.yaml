@@ -1,0 +1,23 @@
+{{- if not .Values.locustConfigMap }}
+{{- $fullName := include "simple-locust-helm.fullname" . }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ printf "%s-cm" $fullName }}
+  labels:
+    {{- include "simple-locust-helm.labels" . | nindent 4 }}
+data:
+  locustfile.py: |- 
+    from locust import HttpUser, task, between 
+
+    class QuickstartUser(HttpUser): 
+        wait_time = between(0.7, 1.3) 
+
+        @task(1) 
+        def visit_website(self): 
+            with self.client.get("/", headers={"User-Agent": "Mozilla"}, timeout=0.2, catch_response=True) as response: 
+                if response.request_meta["response_time"] > 200: 
+                    response.failure("Homepage failed") 
+                else: 
+                    response.success() 
+{{- end }}
