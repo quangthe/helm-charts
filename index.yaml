@@ -41,6 +41,17 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/license-provision-helm-0.1.0/license-provision-helm-0.1.0.tgz
     version: 0.1.0
+  simple-locust-helm:
+  - apiVersion: v2
+    appVersion: 2.10.1
+    created: "2022-07-18T08:22:37.613790262Z"
+    description: A Helm chart for Locust - An open source load testing tool
+    digest: 7cdf2f3c1552c87ce8a356c5791b1daaee3c447eaa834fac5dc85a00f1ef40de
+    name: simple-locust-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/simple-locust-helm-0.1.0/simple-locust-helm-0.1.0.tgz
+    version: 0.1.0
   simple-magnolia-helm:
   - apiVersion: v2
     appVersion: "6.2"
@@ -85,4 +96,4 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.1.0/static-site-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-18T04:50:57.181273089Z"
+generated: "2022-07-18T08:22:37.613805361Z"
