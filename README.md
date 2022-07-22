@@ -2,6 +2,10 @@
 My helm charts for demo and devops
 
 - `simple-magnolia-helm`: Deploy single Magnolia instance with your external Postgres DB (RDS or Postgres pod)
+- `license-provision-helm`: A simple license provision for Magnolia PaaS
+- `simple-locust-helm`: A simple helm chart to deploy [Locust](https://locust.io/) - An open source load testing tool.
+- `simple-springboot-helm`: A simple helm chart to quickly deploy Spring Boot application on K8S.
+- `static-site-helm`: A simple nginx static site to verify ingress and cert-manager setup for a K8S.
 
 ## simple-magnolia-helm
 
@@ -60,3 +64,15 @@ helm del demo
 # then delete the pvc
 kubectl get pvc -l tier=app --no-headers -o name | xargs -I {} kubectl delete {}
 ```
+
+## license-provision-helm
+See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/license-provision-helm)
+
+## simple-locust-helm
+See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/simple-locust-helm)
+
+## simple-springboot-helm
+See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/simple-springboot-helm)
+
+## static-site-helm
+See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/static-site-helm)
