@@ -22,5 +22,5 @@
 {{- end }}
 
 2. Get keycloak admin user credentials
-kubectl -n {{ .Release.Namespace }} secret {{ include "simple-keycloak-helm.fullname" . }} -o jsonpath="{.data.username}" | base64 -d
-kubectl -n {{ .Release.Namespace }} secret {{ include "simple-keycloak-helm.fullname" . }} -o jsonpath="{.data.password}" | base64 -d
+kubectl -n {{ .Release.Namespace }} get secret {{ include "simple-keycloak-helm.fullname" . }} -o jsonpath="{.data.username}" | base64 -d
+kubectl -n {{ .Release.Namespace }} get secret {{ include "simple-keycloak-helm.fullname" . }} -o jsonpath="{.data.password}" | base64 -d
