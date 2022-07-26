@@ -44,6 +44,16 @@ entries:
   simple-keycloak-helm:
   - apiVersion: v2
     appVersion: 12.0.4
+    created: "2022-07-26T06:57:28.795109295Z"
+    description: A Helm chart for deploying demo Keycloak server
+    digest: a32840a6d9649484a389ecc2ee307b0494cddc8664e73a2b932582a93e3d4479
+    name: simple-keycloak-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/simple-keycloak-helm-0.1.2/simple-keycloak-helm-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 12.0.4
     created: "2022-07-26T06:47:57.442667588Z"
     description: A Helm chart for deploying demo Keycloak server
     digest: 8e4c6e67a0c0d2f4e3d3bb4b8b7bd4f92abb004c6cda3d237a26fbe5b6f654ad
@@ -117,4 +127,4 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.1.0/static-site-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-26T06:47:57.44283679Z"
+generated: "2022-07-26T06:57:28.795137597Z"
