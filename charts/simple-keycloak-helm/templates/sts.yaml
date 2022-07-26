@@ -1,0 +1,114 @@
+{{- $fullName := include "simple-keycloak-helm.fullname" . -}}
+{{- $labels := include "simple-keycloak-helm.labels" . -}}
+{{- $selectorLabels := include "simple-keycloak-helm.selectorLabels" .  -}}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- $labels | nindent 4 }}
+spec:
+  serviceName: {{ $fullName }}
+  selector:
+    matchLabels:
+      {{- $selectorLabels | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- $selectorLabels | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "simple-keycloak-helm.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: export
+          emptyDir: {}
+        {{- if .Values.realmConfig }}
+        - name: realm-config
+          configMap:
+            name: {{ .Values.realmConfig }}
+        {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.realmConfig }}
+          args:
+            - "-b"
+            - "0.0.0.0"
+            - "-Dkeycloak.migration.action=import"
+            - "-Dkeycloak.migration.provider=dir"
+            - "-Dkeycloak.migration.dir=/realm-config"
+            - "-Dkeycloak.migration.strategy=IGNORE_EXISTING"
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: KEYCLOAK_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $fullName }}
+                  key: username
+            - name: KEYCLOAK_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $fullName }}
+                  key: password
+            - name: DB_VENDOR
+              value: postgres
+            - name: DB_ADDR
+              value: {{ printf "%s-db" $fullName }}
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_DATABASE
+              value: keycloak
+            - name: DB_USER
+              value: postgres
+            - name: DB_PASSWORD
+              value: postgres
+            - name: PROXY_ADDRESS_FORWARDING
+              value: "true"
+            - name: JDBC_PARAMS
+              value: 'connectTimeout=30'
+          volumeMounts:
+            - name: export
+              mountPath: /export
+            {{- if .Values.realmConfig }}
+            - name: realm-config
+              mountPath: /realm-config
+            {{- end }}
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
