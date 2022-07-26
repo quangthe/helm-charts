@@ -81,8 +81,6 @@ spec:
               value: postgres
             - name: PROXY_ADDRESS_FORWARDING
               value: "true"
-            - name: JDBC_PARAMS
-              value: 'connectTimeout=30'
           volumeMounts:
             - name: export
               mountPath: /export
