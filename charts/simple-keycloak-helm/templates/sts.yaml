@@ -88,14 +88,18 @@ spec:
             - name: realm-config
               mountPath: /realm-config
             {{- end }}
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: http
+          livenessProbe:
+            httpGet:
+              path: /auth
+              port: http
+            initialDelaySeconds: 120
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /auth
+              port: http
+            initialDelaySeconds: 120
+            periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
