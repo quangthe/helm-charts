@@ -8,11 +8,13 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- $labels | nindent 4 }}
+    tier: app
 spec:
   serviceName: {{ $fullName }}
   selector:
     matchLabels:
       {{- $selectorLabels | nindent 6 }}
+      tier: app
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -21,6 +23,7 @@ spec:
       {{- end }}
       labels:
         {{- $selectorLabels | nindent 8 }}
+        tier: app
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -92,13 +95,13 @@ spec:
             httpGet:
               path: /auth
               port: http
-            initialDelaySeconds: 120
+            initialDelaySeconds: 60
             periodSeconds: 5
           readinessProbe:
             httpGet:
               path: /auth
               port: http
-            initialDelaySeconds: 120
+            initialDelaySeconds: 60
             periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

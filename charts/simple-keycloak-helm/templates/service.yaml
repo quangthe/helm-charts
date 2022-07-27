@@ -13,3 +13,4 @@ spec:
       name: http
   selector:
     {{- include "simple-keycloak-helm.selectorLabels" . | nindent 4 }}
+    tier: app
