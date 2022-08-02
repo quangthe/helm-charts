@@ -124,6 +124,17 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/simple-magnolia-helm-0.1.0/simple-magnolia-helm-0.1.0.tgz
     version: 0.1.0
+  simple-oauth2-proxy-helm:
+  - apiVersion: v2
+    appVersion: v7.3.0
+    created: "2022-08-02T14:17:10.057143219Z"
+    description: A simple helm chart to deploy OAuth2 proxy
+    digest: 63ac4ddd01242b09939a53640e6f13607c615f26905958bd2b81aec5dd1011a7
+    name: simple-oauth2-proxy-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/simple-oauth2-proxy-helm-0.1.0/simple-oauth2-proxy-helm-0.1.0.tgz
+    version: 0.1.0
   simple-springboot-helm:
   - apiVersion: v2
     appVersion: 0.0.2
@@ -158,4 +169,4 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.1.0/static-site-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-02T06:37:25.542673927Z"
+generated: "2022-08-02T14:17:10.057397523Z"
