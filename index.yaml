@@ -44,6 +44,16 @@ entries:
   simple-keycloak-helm:
   - apiVersion: v2
     appVersion: 12.0.4
+    created: "2022-08-02T06:37:25.284646806Z"
+    description: A Helm chart for deploying demo Keycloak server
+    digest: b32baa325f5cd517c199df55cdbed74f88d6bfb3acf573f6297b761a99156f9f
+    name: simple-keycloak-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/simple-keycloak-helm-0.2.1/simple-keycloak-helm-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 12.0.4
     created: "2022-07-27T13:16:05.443854953Z"
     description: A Helm chart for deploying demo Keycloak server
     digest: bd854f5d8a57430fd05fb9390b231d2238fd8a3e2e07931bf95f061a747166cb
@@ -128,6 +138,17 @@ entries:
   static-site-helm:
   - apiVersion: v2
     appVersion: "1.0"
+    created: "2022-08-02T06:37:25.542638742Z"
+    description: A simple Helm chart to verify Magnolia PaaS ingress and certificate
+      setup
+    digest: d8653097bc706470eb103260dfd499477cf07db9a4c366ddda2ab86c84daeaa9
+    name: static-site-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.2.0/static-site-helm-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: "1.0"
     created: "2022-06-25T04:16:26.466391008Z"
     description: A simple Helm chart to verify Magnolia PaaS ingress and certificate
       setup
@@ -137,4 +158,4 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.1.0/static-site-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-27T13:16:05.443874953Z"
+generated: "2022-08-02T06:37:25.542673927Z"
