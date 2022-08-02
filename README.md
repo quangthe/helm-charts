@@ -1,4 +1,5 @@
 # helm-charts
+
 My helm charts for demo and devops
 
 - `simple-magnolia-helm`: Deploy single Magnolia instance with your external Postgres DB (RDS or Postgres pod)
@@ -7,16 +8,18 @@ My helm charts for demo and devops
 - `simple-springboot-helm`: A simple helm chart to quickly deploy Spring Boot application on K8S.
 - `static-site-helm`: A simple nginx static site to verify ingress and cert-manager setup for a K8S.
 - `simple-keycloak-helm`: A Helm chart for deploying demo Keycloak server
+- `simple-oauth2-proxy-helm`: A simple helm chart to deploy OAuth2 proxy
 
 ## simple-magnolia-helm
 
 values.yaml
+
 ```
 ingress:
   enabled: true
   className: "nginx"
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod 
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: travel.demo.example.com
       paths:
@@ -52,6 +55,7 @@ db:
 ```
 
 Install helm chart
+
 ```
 helm repo add helm-charts https://quangthe.github.io/helm-charts/
 helm repo update
@@ -59,6 +63,7 @@ helm upgrade -i demo helm-charts/simple-magnolia-helm -f values.yaml
 ```
 
 Clean up
+
 ```
 helm del demo
 
@@ -67,16 +72,25 @@ kubectl get pvc -l tier=app --no-headers -o name | xargs -I {} kubectl delete {}
 ```
 
 ## license-provision-helm
+
 See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/license-provision-helm)
 
 ## simple-locust-helm
+
 See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/simple-locust-helm)
 
 ## simple-springboot-helm
+
 See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/simple-springboot-helm)
 
 ## static-site-helm
+
 See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/static-site-helm)
 
 ## simple-keycloak-helm
+
 See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/simple-keycloak-helm)
+
+## simple-oauth2-proxy-helm
+
+See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/simple-oauth2-proxy-helm)
