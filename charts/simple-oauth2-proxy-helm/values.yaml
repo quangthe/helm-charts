@@ -1,4 +1,5 @@
 oauth2:
+  # support keycloak-oidc, oidc 
   provider: oidc
   providerDisplayName: "OAuth2 Proxy"
   oidcIssuerUrl: "https://dev-6285375.okta.com/oauth2/aus11dbpoxsJ1AyUF5d7"
@@ -8,6 +9,8 @@ oauth2:
   domain: my.domain.example.com
   # point to existing tls secret
   tlsSecretName: my-domain-tls
+  # for keycloak provider: <realm role name> or <client id>:<client role name>
+  keycloakAllowedRoles: []
 
 replicaCount: 1
 

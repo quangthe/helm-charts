@@ -27,10 +27,12 @@ spec:
   {{- if and .Values.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
   ingressClassName: {{ .Values.ingress.className }}
   {{- end }}
+  {{- if .Values.oauth2.tlsSecretName }}
   tls:
     - hosts:
         - {{ .Values.oauth2.domain }}
       secretName: {{ .Values.oauth2.tlsSecretName }}
+  {{- end }}
   rules:
     - host: {{ .Values.oauth2.domain }}
       http:
