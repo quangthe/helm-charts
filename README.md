@@ -12,47 +12,45 @@ My helm charts for demo and devops
 
 ## simple-magnolia-helm
 
-values.yaml
+<details>
+  <summary>values.yaml</summary>
 
-```
-ingress:
-  enabled: true
-  className: "nginx"
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-  hosts:
-    - host: travel.demo.example.com
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls:
-    - secretName: travel-demo
-      hosts:
-        - travel.demo.example.com
-
-war:
-  repository: pcloud/magnolia-travel-demo
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
-
-magnoliaMode: "author"
-
-resources:
-  limits:
-    cpu: 1500m
-    memory: 2Gi
-  requests:
-    cpu: 500m
-    memory: 2Gi
-
-db:
-  host: acid-travel
-  name: magnolia
-  username: mgnl
-  passwordFrom: "db-secret"
-  passwordFromKey: password
-```
+  ```
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: travel.demo.example.com
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: travel-demo
+        hosts:
+          - travel.demo.example.com
+  war:
+    repository: pcloud/magnolia-travel-demo
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"
+  magnoliaMode: "author"
+  resources:
+    limits:
+      cpu: 1500m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 2Gi
+  db:
+    host: acid-travel
+    name: magnolia
+    username: mgnl
+    passwordFrom: "db-secret"
+    passwordFromKey: password
+  ```
+</details>
 
 Install helm chart
 
