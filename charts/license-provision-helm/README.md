@@ -2,11 +2,21 @@
 A simple license provision for Magnolia PaaS
 
 ## Install helm chart
+
+Example: Magnolia PaaS instances are in dev namespace
+
+Create `docker-registry` secret named `license-provision` in the `dev` namespace.
+```
+kubectl -n dev create secret docker-registry license-provision \
+--docker-server=https://registry.your-company.com \
+--docker-username="aaa" \
+--docker-password="bbb"
+```
+
 ```
 helm repo add helm-charts https://quangthe.github.io/helm-charts
 helm repo update
 
-# example: Magnolia PaaS instances are in dev namespace
 helm --namespace dev upgrade -i \
 --set namespace=dev \
 --set customer="test" \

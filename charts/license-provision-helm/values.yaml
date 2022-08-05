@@ -14,10 +14,10 @@ magnoliaVersion: ""
 image:
   repository: registry.magnolia-platform.com/operations/license-provision
   pullPolicy: IfNotPresent
-  tag: "v0.1.5"
+  tag: "v0.1.6"
 
 imagePullSecrets:
-  - name: gitlab
+  - name: license-provision
 nameOverride: ""
 fullnameOverride: ""
 
