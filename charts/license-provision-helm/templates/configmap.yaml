@@ -7,5 +7,5 @@ metadata:
   labels:
     {{- include "license-provision-helm.labels" . | nindent 4 }}
 data:
-  customer: {{ .Values.customer }}
-  magnoliaVersion: {{ .Values.magnoliaVersion }}
+  customer: {{ .Values.customer | quote }}
+  magnoliaVersion: {{ .Values.magnoliaVersion | quote }}
