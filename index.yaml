@@ -3,6 +3,16 @@ entries:
   license-provision-helm:
   - apiVersion: v2
     appVersion: v0.1.6
+    created: "2022-08-30T13:22:24.81225664Z"
+    description: A simple helm chart to provision license for Magnolia PaaS
+    digest: 152e8d7c39e9a27211e1e55be7de3e245691d5cbcd05d1e37ae35ebb65c4e34f
+    name: license-provision-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/license-provision-helm-0.1.8/license-provision-helm-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: v0.1.6
     created: "2022-08-05T08:02:35.158371529Z"
     description: A simple helm chart to provision license for Magnolia PaaS
     digest: 42d20eb61e68af001674a0e736853f8ec65b0079aeac88a040e9d20fcada617a
@@ -229,4 +239,4 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.1.0/static-site-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-05T08:02:35.158664826Z"
+generated: "2022-08-30T13:22:24.812443541Z"
