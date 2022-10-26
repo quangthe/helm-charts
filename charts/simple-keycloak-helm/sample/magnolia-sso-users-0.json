@@ -1,0 +1,33 @@
+{
+  "realm": "magnolia-sso",
+  "users": [
+    {
+      "id": "eae200f3-ffc8-4400-9b21-626b56be9213",
+      "createdTimestamp": 1637897704344,
+      "username": "ssouser",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": true,
+      "firstName": "The",
+      "lastName": "Tran",
+      "email": "ssouser@magnolia-cms.com",
+      "credentials": [
+        {
+          "id": "908778eb-c0b4-4602-8008-a59ab9594684",
+          "type": "password",
+          "createdDate": 1637897719652,
+          "secretData": "{\"value\":\"OXCZCU90AxSStckuApF8bKY+AdgSMWIWEr/386ROVp4p6Ct9M18VoZspdjpsQmOK85KXIzOHVHsq5a90JOsrpA==\",\"salt\":\"5c1HfJDbWSW2z5W3qpmdow==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": ["uma_authorization", "offline_access"],
+      "clientRoles": {
+        "account": ["view-profile", "manage-account"]
+      },
+      "notBefore": 0,
+      "groups": ["/superuser"]
+    }
+  ]
+}

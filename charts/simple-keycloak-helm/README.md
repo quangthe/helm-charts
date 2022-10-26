@@ -1,7 +1,15 @@
 # simple-keycloak-helm
 
 ## Quickstart
-values.yaml
+
+Create `realm-config` config map, you can use the `sample/` for quickstart
+
+```bash
+kubectl create cm realm-config --from-file=sample/
+```
+
+Create helm value file `values.yaml`
+
 ```yaml
 # config map contains realm configs. Set "" to not bootstrap realms.
 realmConfig: "realm-config"
