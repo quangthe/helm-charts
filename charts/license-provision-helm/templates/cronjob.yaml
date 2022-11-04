@@ -64,6 +64,12 @@ spec:
                       key: customer
                       name: {{ printf "%s-cm" $fullName }}
                       optional: true
+                - name: MGNL_PAAS_CLIENT_SECRET
+                  valueFrom:
+                    configMapKeyRef:
+                      key: clientSecret
+                      name: {{ printf "%s-cm" $fullName }}
+                      optional: true
               volumeMounts:
                 - mountPath: /auth
                   name: auth

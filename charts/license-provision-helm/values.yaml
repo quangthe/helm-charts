@@ -10,11 +10,12 @@ privateKeyPath: "/auth/private.pem"
 # license registration info
 customer: ""
 magnoliaVersion: ""
+clientSecret: ""
 
 image:
   repository: registry.magnolia-platform.com/operations/license-provision
   pullPolicy: IfNotPresent
-  tag: "v0.1.6"
+  tag: "v0.1.7"
 
 imagePullSecrets:
   - name: license-provision

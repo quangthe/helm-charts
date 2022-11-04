@@ -9,3 +9,4 @@ metadata:
 data:
   customer: {{ .Values.customer | quote }}
   magnoliaVersion: {{ .Values.magnoliaVersion | quote }}
+  clientSecret: {{ .Values.clientSecret | quote }}
