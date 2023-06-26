@@ -35,6 +35,7 @@ My helm charts for demo and devops
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
+  datastore: db
   magnoliaMode: "author"
   resources:
     limits:
