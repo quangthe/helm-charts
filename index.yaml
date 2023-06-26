@@ -156,6 +156,16 @@ entries:
   simple-magnolia-helm:
   - apiVersion: v2
     appVersion: "6.2"
+    created: "2023-06-26T08:40:09.702771468Z"
+    description: A simple helm chart to deploy Magnolia with external Postgres database.
+    digest: 2f1ffb4b4b5fa5fc836847cc6ac9a43c670d4e9f5cb1f49bdc157eaa70fb4386
+    name: simple-magnolia-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/simple-magnolia-helm-0.1.3/simple-magnolia-helm-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: "6.2"
     created: "2022-08-12T16:38:04.393378083Z"
     description: A simple helm chart to deploy Magnolia with external Postgres database.
     digest: 228ab58531189204f734974cf8de9aadf057eb5096eed1c8a777b8e3733f2dc9
