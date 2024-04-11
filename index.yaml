@@ -259,6 +259,17 @@ entries:
   static-site-helm:
   - apiVersion: v2
     appVersion: "1.0"
+    created: "2024-04-11T02:20:36.514594563Z"
+    description: A simple Helm chart to verify Magnolia PaaS ingress and certificate
+      setup
+    digest: a677fd5a070cc74e3ada4035916d330db4f209ada0f828d22814f90a41fa80b7
+    name: static-site-helm
+    type: application
+    urls:
+    - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.2.1/static-site-helm-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: "1.0"
     created: "2022-08-02T06:37:25.542638742Z"
     description: A simple Helm chart to verify Magnolia PaaS ingress and certificate
       setup
@@ -279,4 +290,4 @@ entries:
     urls:
     - https://github.com/quangthe/helm-charts/releases/download/static-site-helm-0.1.0/static-site-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-04T03:23:49.35890851Z"
+generated: "2024-04-11T02:20:36.514672578Z"
