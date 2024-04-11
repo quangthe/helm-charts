@@ -43,9 +43,9 @@ service:
 ingress:
   enabled: false
   className: "nginx"
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: 512m
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  annotations: {}
+    # nginx.ingress.kubernetes.io/proxy-body-size: 512m
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
   hosts:
     - host: test.example.com
       paths:
