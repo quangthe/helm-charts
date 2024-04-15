@@ -1,9 +1,0 @@
-1. Get the license cronjob
-
-    kubectl --namespace {{ .Release.Namespace }} get cronjob {{ printf "%s-cj" (include "license-provision-helm.fullname" .)}}
-
-2. Get the jobs
-
-    kubectl --namespace {{ .Release.Namespace }} get job \
-      -l "app.kubernetes.io/instance={{ .Release.Name }}" \
-      -l "app.kubernetes.io/name={{ .Chart.Name }}"
