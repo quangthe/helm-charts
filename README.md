@@ -72,10 +72,6 @@ helm del demo
 kubectl get pvc -l tier=app --no-headers -o name | xargs -I {} kubectl delete {}
 ```
 
-## license-provision-helm
-
-See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/license-provision-helm)
-
 ## simple-locust-helm
 
 See [instruction](https://github.com/quangthe/helm-charts/tree/main/charts/simple-locust-helm)
