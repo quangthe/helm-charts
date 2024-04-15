@@ -3,7 +3,6 @@
 My helm charts for demo and devops
 
 - `simple-magnolia-helm`: Deploy single Magnolia instance with your external Postgres DB (RDS or Postgres pod)
-- `license-provision-helm`: A simple license provision for Magnolia PaaS
 - `simple-locust-helm`: A simple helm chart to deploy [Locust](https://locust.io/) - An open source load testing tool.
 - `simple-springboot-helm`: A simple helm chart to quickly deploy Spring Boot application on K8S.
 - `static-site-helm`: A simple nginx static site to verify ingress and cert-manager setup for a K8S.
